@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A special birthday message and tribute for Cherono. Wishing you a happy birthday filled with love and light.">
+  <title>Happy Birthday Cherono 🎂</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-bg: #0d0d12;
+      --secondary-bg: #1a1a20;
+      --accent-color: #ff7baf;
+      --text-color: #e0e0e0;
+      --muted-text: #bcbcbc;
+      --card-bg: rgba(255, 255, 255, 0.10);
+      --card-border: rgba(255, 255, 255, 0.17);
+      --header-gradient-start: #fc466b;
+      --header-gradient-end: #3f5efb;
+      --button-color: #6c5ce7;
+      --button-hover: #4834d4;
+      --star-color: #ff9ff3;
+      --glow-color: #ff00ff;
+      --reveal-glow: #ff7baf;
+      --avatar-border: #fff6;
+      --cursor: pointer;
+      --transition: 0.3s cubic-bezier(.4,2,.6,1);
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --primary-bg: #f8f8ff;
+        --secondary-bg: #fff;
+        --text-color: #232323;
+        --muted-text: #6c6c6c;
+        --card-bg: rgba(255,255,255,0.8);
+        --card-border: #e0e0e0;
+        --button-color: #a29bfe;
+        --button-hover: #6c5ce7;
+      }
+      body.light-mode {
+        background: var(--primary-bg);
+        color: var(--text-color);
+      }
+      body.light-mode header {
+        background: linear-gradient(to right, var(--header-gradient-end), var(--header-gradient-start));
+      }
+    }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      transition: background 0.5s;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 180vw;
+      height: 140vh;
+      background: radial-gradient(circle at center, rgba(63, 94, 251, 0.15) 0%, rgba(13, 13, 18, 0) 70%);
+      transform: translate(-50%, -50%);
+      z-index: -3;
+      pointer-events: none;
+    }
+    header {
+      margin: 0 auto;
+      margin-top: 2.5rem;
+      margin-bottom: 2.5rem;
+      max-width: 850px;
+      width: calc(100% - 2rem);
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--card-border);
+      border-radius: 1.5rem;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+      padding: 2.8rem 2rem 2.2rem 2rem;
+      font-family: 'Great Vibes', cursive;
+      color: #fff;
+      position: relative;
+      overflow: visible;
+      transition: background var(--transition), box-shadow var(--transition);
+    }
+    header:hover {
+      transform: translateY(-7px) scale(1.01);
+      box-shadow: 0 14px 34px rgba(0,0,0,0.55);
+    }
+    .avatar-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid var(--avatar-border);
+      box-shadow: 0 4px 32px rgba(0,0,0,0.25);
+      margin-bottom: 0.6rem;
+      background: #fff6;
+    }
+    .avatar-caption {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      letter-spacing: 1.5px;
+      color: var(--accent-color);
+      text-shadow: 0 1px 8px #0003;
+    }
+    header h1 {
+      font-size: clamp(2.8rem, 8vw, 4.8rem);
+      margin: 0;
+      text-shadow: 0 0 18px rgba(0,0,0,0.65);
+      letter-spacing: 2px;
+      animation: fadeInZoom 1.5s cubic-bezier(.4,2,.6,1);
+      font-family: 'Great Vibes', cursive;
+      color: var(--text-color);
+    }
+    @keyframes fadeInZoom {
+      0% { opacity: 0; transform: scale(0.82) translateY(-30px);}
+      100% { opacity: 1; transform: scale(1) translateY(0);}
+    }
+    header p {
+      font-size: clamp(1.1rem, 3vw, 1.5rem);
+      color: #ffeef7;
+      margin-top: 0.9rem;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+      font-family: 'Poppins', sans-serif;
+    }
+    .slideshow {
+      position: relative;
+      max-width: 650px;
+      height: 420px;
+      margin: 3rem auto;
+      border-radius: 1.5rem;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.8);
+      overflow: hidden;
+      background-color: var(--secondary-bg);
+    }
+    .slideshow img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0; left: 0;
+      opacity: 0;
+      transition: opacity 1s cubic-bezier(.4,2,.6,1);
+      border-radius: 1.5rem;
+      z-index: 1;
+    }
+    .slideshow img.active { opacity: 1; z-index: 2;}
+    .slideshow-controls {
+      position: absolute;
+      width: 100%;
+      bottom: 18px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      z-index: 10;
+    }
+    .slide-dot {
+      width: 13px; height: 13px;
+      border-radius: 50%;
+      background: var(--muted-text);
+      margin: 0 2px;
+      border: 2px solid var(--accent-color);
+      cursor: var(--cursor);
+      transition: background 0.3s, transform 0.2s;
+      opacity: 0.4;
+    }
+    .slide-dot.active {
+      background: var(--accent-color);
+      opacity: 1;
+      transform: scale(1.17);
+      box-shadow: 0 0 8px var(--accent-color);
+    }
+    .message, .why-section, .hidden-message, .quote-carousel {
+      background-color: var(--card-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--card-border);
+      border-radius: 1.5rem;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+      padding: 2.5rem 2rem;
+      margin: 2.5rem auto;
+      max-width: 850px;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .message:hover, .why-section:hover, .hidden-message:hover, .quote-carousel:hover {
+      transform: translateY(-7px) scale(1.01);
+      box-shadow: 0 14px 34px rgba(0,0,0,0.55);
+    }
+    .message {
+      font-size: clamp(1.08rem, 2.5vw, 1.22rem);
+      color: var(--text-color);
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.14);
+    }
+    .message p:not(:last-child) { margin-bottom: 1.25rem;}
+    .section-divider {
+      width: 70px; height: 3.5px;
+      background: linear-gradient(90deg, var(--accent-color), var(--button-color));
+      margin: 1.7rem auto 2.5rem auto;
+      border-radius: 6px;
+      opacity: 0.73;
+    }
+    /* Quote Carousel */
+    .quote-carousel {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 200px;
+    }
+    .quote-carousel h2 {
+      color: var(--accent-color);
+      margin-bottom: 2rem;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      text-shadow: 0 0 8px rgba(255,123,175,0.13);
+    }
+    .carousel-quote {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(1.3rem, 3vw, 2.1rem);
+      color: var(--text-color);
+      text-align: center;
+      margin-bottom: 2rem;
+      min-height: 75px;
+      transition: opacity 0.4s, transform 0.4s;
+      opacity: 1;
+    }
+    .carousel-controls {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .carousel-btn {
+      background: var(--button-color);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 38px;
+      height: 38px;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 2px 8px #0003;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      outline: none;
+      user-select: none;
+    }
+    .carousel-btn:active {
+      background: var(--button-hover);
+      transform: scale(0.93);
+    }
+    .carousel-dots {
+      display: flex;
+      gap: 7px;
+      justify-content: center;
+      align-items: center;
+    }
+    .carousel-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--muted-text);
+      border: 2px solid var(--accent-color);
+      opacity: 0.5;
+      cursor: pointer;
+      transition: background 0.3s, opacity 0.3s, transform 0.2s;
+    }
+    .carousel-dot.active {
+      background: var(--accent-color);
+      opacity: 1;
+      box-shadow: 0 0 7px var(--accent-color);
+      transform: scale(1.17);
+    }
+    .reveal-section {
+      margin: 4rem auto;
+      max-width: 700px;
+      padding: 0 1.5rem;
+    }
+    .reveal-button {
+      padding: 1.2rem 2.5rem;
+      font-size: 1.25rem;
+      background-color: var(--button-color);
+      color: white;
+      border: none;
+      border-radius: 1rem;
+      cursor: var(--cursor);
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 10px var(--glow-color);
+      outline: none;
+      position: relative;
+      z-index: 3;
+    }
+    .reveal-button:hover {
+      background-color: var(--button-hover);
+      transform: translateY(-6px) scale(1.04);
+      box-shadow: 0 0 25px var(--reveal-glow), 0 10px 30px rgba(0,0,0,0.7);
+    }
+    .hidden-message {
+      display: none;
+      margin-top: 2rem;
+      font-size: clamp(1.05rem, 2.5vw, 1.23rem);
+      animation: reveal-msg 1.2s cubic-bezier(.4,2,.6,1);
+    }
+    @keyframes reveal-msg {
+      0% { opacity: 0; transform: translateY(25px) scale(0.97);}
+      100% { opacity: 1; transform: translateY(0) scale(1);}
+    }
+    footer {
+      margin-top: auto;
+      padding: 2rem 1.5rem;
+      font-style: italic;
+      color: var(--muted-text);
+      font-size: 1.01rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      background-color: var(--secondary-bg);
+      box-shadow: 0 -5px 14px rgba(0,0,0,0.18);
+      text-align: center;
+      letter-spacing: 0.01em;
+      opacity: 0.91;
+    }
+    footer small {
+      display: block;
+      margin-top: 0.6rem;
+      font-size: 0.89rem;
+      color: var(--muted-text);
+    }
+    .stars {
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+      top: 0; left: 0;
+      z-index: 0;
+      background: transparent;
+      pointer-events: none;
+    }
+    .star {
+      width: 4px; height: 4px;
+      background: var(--star-color);
+      border-radius: 50%;
+      position: absolute;
+      opacity: 0.6;
+      animation: twinkle 3s infinite ease-in-out;
+      box-shadow: 0 0 5px var(--star-color);
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.3; transform: scale(1);}
+      50% { opacity: 1; transform: scale(1.7);}
+    }
+    .confetti {
+      position: fixed;
+      left: 50%; top: 50%;
+      width: 100vw; height: 100vh;
+      pointer-events: none;
+      z-index: 999;
+      overflow: visible;
+      display: none;
+    }
+    .confetti-piece {
+      position: absolute;
+      width: 11px; height: 18px;
+      border-radius: 2px;
+      opacity: 0.8;
+      will-change: transform, opacity;
+      pointer-events: none;
+    }
+    @media (max-width: 768px) {
+      header { padding: 1.5rem 0.3rem 1rem; }
+      .avatar { width: 80px; height: 80px;}
+      .slideshow { max-width: 97%; height: 220px;}
+      .message, .why-section, .hidden-message, .quote-carousel { padding: 1.2rem 0.6rem; margin: 1.3rem auto;}
+      .reveal-button { padding: 0.9rem 1.8rem; font-size: 1.1rem;}
+      .section-divider { width: 40px; margin: 1.2rem auto 1.8rem;}
+      .carousel-quote { font-size: 1.1rem; }
+    }
+    @media (max-width: 480px) {
+      .avatar { width: 65px; height: 65px;}
+      header h1 { font-size: 1.6rem;}
+      .slideshow { height: 140px;}
+      .message, .why-section, .hidden-message, .quote-carousel { font-size: 0.97rem;}
+    }
+  </style>
+</head>
+<body>
+  <!-- Stars -->
+  <div class="stars" id="stars"></div>
+  <!-- Confetti -->
+  <div class="confetti" id="confetti"></div>
+  <header>
+    <div class="avatar-wrap">
+      <img class="avatar" src="h.jpg" alt="Cherono's Avatar" />
+      <div class="avatar-caption">Cherono</div>
+    </div>
+    <h1>Happy Birthday Cherono</h1>
+    <p>To someone who deserves the warmth of every sunset and the calm of every dawn.</p>
+  </header>
+  <main>
+    <section class="slideshow" aria-live="polite" aria-atomic="true">
+      <img class="slide active" src="d.jpg" alt="Cherono smiling in a field of golden flowers during sunset" />
+      <img class="slide" src="c.jpg" alt="Cherono's silhouette against a vibrant orange and pink sunset sky" />
+      <img class="slide" src="e.jpg" alt="Cherono enjoying a peaceful moment by the lake at dawn" />
+      <img class="slide" src="f.jpg" alt="Cherono looking serene, surrounded by lush greenery" />
+      <div class="slideshow-controls" id="slideshowControls"></div>
+    </section>
+
+    <!-- BIRTHDAY MESSAGE SECTION -->
+    <section class="message" aria-labelledby="birthdayMessageHeading">
+      <h2 id="birthdayMessageHeading" class="sr-only">Birthday Message</h2>
+      <p>Hey Cherono,</p>
+      <p>You’re not just a year older today. You’re a year stronger, wiser, and more beautiful — inside and out.</p>
+      <p>I know the past year hasn’t been easy, but I’ve seen you glow through the pain. You didn’t just survive — you grew, and you kept shining. And that’s something powerful.</p>
+      <p>This little page is just a reminder that you’re deeply appreciated. Your kindness, your strength, your heart — it all matters. And I hope today fills your soul with love and light.</p>
+      <p>With love,<br>Kibet 🧡</p>
+    </section>
+
+    <!-- QUOTE CAROUSEL SECTION -->
+    <section class="quote-carousel" aria-labelledby="whyYouAreAmazingHeading">
+      <h2 id="whyYouAreAmazingHeading">Why You're Amazing</h2>
+      <div class="carousel-quote" id="carouselQuote"></div>
+      <div class="carousel-controls">
+        <button class="carousel-btn" id="carouselPrev" aria-label="Previous quote" title="Previous">&lt;</button>
+        <button class="carousel-btn" id="carouselNext" aria-label="Next quote" title="Next">&gt;</button>
+      </div>
+      <div class="carousel-dots" id="carouselDots"></div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section class="reveal-section">
+      <button id="revealButton" class="reveal-button" autocomplete="off">Click to Reveal 🎁</button>
+      <div id="hiddenMsg" class="hidden-message">
+        <p>I’ll always be here for you, no matter what. Watching you heal, grow, and keep your light alive has inspired me more than words can say. You’re not just amazing — you’re one of a kind, Cherono. 🧡</p>
+      </div>
+    </section>
+  </main>
+  <footer>
+    Always cheering for you — Kibet 💖<br>
+    <small>This page was made with love ✨</small>
+  </footer>
+  <audio id="backgroundMusic" loop autoplay>
+    <source src="music.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  <script>
+    // ----------- STAR BACKGROUND -----------
+    const starsContainer = document.getElementById("stars");
+    for (let i = 0; i < 100; i++) {
+      let star = document.createElement("div");
+      star.classList.add("star");
+      star.style.left = Math.random() * 100 + "%";
+      star.style.top = Math.random() * 100 + "%";
+      star.style.animationDelay = Math.random() * 7 + "s";
+      star.style.animationDuration = Math.random() * 5 + 3 + "s";
+      starsContainer.appendChild(star);
+    }
+    // ----------- SLIDESHOW + CONTROLS -----------
+    let slideIndex = 0;
+    const slides = document.querySelectorAll(".slide");
+    const slideshowControls = document.getElementById('slideshowControls');
+    let slideshowInterval;
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+        if (dots[i]) dots[i].classList.toggle('active', i === index);
+      });
+    }
+    function nextSlide() {
+      slideIndex = (slideIndex + 1) % slides.length;
+      showSlide(slideIndex);
+    }
+    function prevSlide() {
+      slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+      showSlide(slideIndex);
+    }
+    function startSlideshow() {
+      clearInterval(slideshowInterval);
+      slideshowInterval = setInterval(nextSlide, 3500);
+    }
+    // Dots
+    let dots = [];
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'slide-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+      dot.onclick = () => {
+        slideIndex = i;
+        showSlide(slideIndex);
+        startSlideshow();
+      };
+      slideshowControls.appendChild(dot);
+      dots.push(dot);
+    });
+    // Manual arrow keys
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight') { nextSlide(); startSlideshow(); }
+      if (e.key === 'ArrowLeft') { prevSlide(); startSlideshow(); }
+    });
+    showSlide(slideIndex);
+    startSlideshow();
+    // ----------- QUOTE CAROUSEL -----------
+    const carouselQuotes = [
+      "You’re kind even when life wasn’t kind to you.",
+      "Your smile still lights up rooms.",
+      "You love deeply. You care hard.",
+      "You make others feel safe and seen.",
+      "You’ve grown through things that would’ve broken others.",
+      "You inspire without even realizing it."
+    ];
+    let carouselIndex = 0;
+    const quoteEl = document.getElementById('carouselQuote');
+    const dotsEl = document.getElementById('carouselDots');
+    const prevBtn = document.getElementById('carouselPrev');
+    const nextBtn = document.getElementById('carouselNext');
+    let carouselTimer = null;
+    function showCarouselQuote(idx, transition = true) {
+      if (transition) {
+        quoteEl.style.opacity = 0;
+        quoteEl.style.transform = "translateY(20px)";
+        setTimeout(() => {
+          quoteEl.textContent = `“${carouselQuotes[idx]}”`;
+          quoteEl.style.opacity = 1;
+          quoteEl.style.transform = "translateY(0)";
+        }, 200);
+      } else {
+        quoteEl.textContent = `“${carouselQuotes[idx]}”`;
+        quoteEl.style.opacity = 1;
+        quoteEl.style.transform = "translateY(0)";
+      }
+      Array.from(dotsEl.children).forEach((dot, i) => {
+        dot.classList.toggle('active', i === idx);
+      });
+    }
+    function nextCarouselQuote() {
+      carouselIndex = (carouselIndex + 1) % carouselQuotes.length;
+      showCarouselQuote(carouselIndex);
+      resetCarouselTimer();
+    }
+    function prevCarouselQuote() {
+      carouselIndex = (carouselIndex - 1 + carouselQuotes.length) % carouselQuotes.length;
+      showCarouselQuote(carouselIndex);
+      resetCarouselTimer();
+    }
+    function selectCarouselQuote(idx) {
+      carouselIndex = idx;
+      showCarouselQuote(carouselIndex);
+      resetCarouselTimer();
+    }
+    function resetCarouselTimer() {
+      clearInterval(carouselTimer);
+      carouselTimer = setInterval(nextCarouselQuote, 4200);
+    }
+    // Build dots
+    dotsEl.innerHTML = '';
+    for (let i = 0; i < carouselQuotes.length; i++) {
+      const dot = document.createElement('span');
+      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', `Show quote ${i + 1}`);
+      dot.onclick = () => selectCarouselQuote(i);
+      dotsEl.appendChild(dot);
+    }
+    prevBtn.addEventListener('click', prevCarouselQuote);
+    nextBtn.addEventListener('click', nextCarouselQuote);
+    showCarouselQuote(carouselIndex, false);
+    resetCarouselTimer();
+    // Pause carousel on hover/focus for accessibility
+    quoteEl.addEventListener('mouseenter', () => clearInterval(carouselTimer));
+    quoteEl.addEventListener('mouseleave', resetCarouselTimer);
+    prevBtn.addEventListener('mouseenter', () => clearInterval(carouselTimer));
+    prevBtn.addEventListener('mouseleave', resetCarouselTimer);
+    nextBtn.addEventListener('mouseenter', () => clearInterval(carouselTimer));
+    nextBtn.addEventListener('mouseleave', resetCarouselTimer);
+    dotsEl.addEventListener('mouseenter', () => clearInterval(carouselTimer));
+    dotsEl.addEventListener('mouseleave', resetCarouselTimer);
+    // Keyboard navigation for carousel
+    document.addEventListener('keydown', (e) => {
+      if(document.activeElement === prevBtn || document.activeElement === nextBtn) {
+        if(e.key === 'ArrowLeft') { prevCarouselQuote(); }
+        if(e.key === 'ArrowRight') { nextCarouselQuote(); }
+      }
+    });
+    // ----------- CONFETTI -----------
+    function createConfettiPiece() {
+      const colors = ['#ff7baf','#ff6f91','#6ec6ff','#fff176','#78e08f','#fc466b','#3f5efb','#6c5ce7'];
+      const el = document.createElement('div');
+      el.className = 'confetti-piece';
+      el.style.background = colors[Math.floor(Math.random() * colors.length)];
+      el.style.left = Math.random() * 98 + 'vw';
+      el.style.top = '-10vh';
+      el.style.transform = `rotate(${Math.random()*360}deg)`;
+      el.style.opacity = Math.random() * 0.7 + 0.3;
+      el.style.width = Math.random() > 0.5 ? '7px' : '11px';
+      el.style.height = Math.random() > 0.5 ? '14px' : '18px';
+      el.style.transition = 'none';
+      return el;
+    }
+    function fireConfetti() {
+      const count = 70;
+      const confetti = document.getElementById('confetti');
+      confetti.innerHTML = '';
+      confetti.style.display = 'block';
+      for (let i = 0; i < count; i++) {
+        const el = createConfettiPiece();
+        confetti.appendChild(el);
+        setTimeout(() => {
+          el.style.transition = 'all 2.3s cubic-bezier(.4,2,.6,1)';
+          el.style.top = 85 + 15 * Math.random() + 'vh';
+          el.style.left = (parseInt(el.style.left) + (Math.random() - 0.5) * 30) + 'vw';
+          el.style.opacity = 0;
+        }, 10);
+      }
+      setTimeout(() => confetti.style.display = 'none', 2400);
+    }
+    // ----------- REVEAL MESSAGE BUTTON -----------
+    document.getElementById('revealButton').addEventListener('click', function() {
+      const msg = document.getElementById('hiddenMsg');
+      if (msg.style.display === 'block') {
+        msg.style.display = 'none';
+        this.textContent = 'Click to Reveal 🎁';
+      } else {
+        msg.style.display = 'block';
+        this.textContent = 'Message Revealed! 🎉';
+        fireConfetti();
+      }
+    });
+    // --- AUTOPLAY MUSIC for all browsers (if possible) ---
+    window.addEventListener('DOMContentLoaded', function() {
+      const bgm = document.getElementById('backgroundMusic');
+      function tryPlay() {
+        if (bgm.paused) {
+          bgm.play().catch(() => {});
+        }
+        window.removeEventListener('click', tryPlay);
+        window.removeEventListener('touchstart', tryPlay);
+      }
+      bgm.play().catch(() => {
+        window.addEventListener('click', tryPlay, { once: true });
+        window.addEventListener('touchstart', tryPlay, { once: true });
+      });
+    });
+    // ----------- ACCESSIBILITY: Focus outline for buttons -----------
+    document.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('keydown', e => {
+        if (e.key === 'Tab') btn.style.outline = '2px solid #ff7baf';
+      });
+      btn.addEventListener('blur', e => btn.style.outline = '');
+    });
+    // ----------- FUN: Cursor sparkle effect -----------
+    document.body.addEventListener('pointermove', function(e) {
+      const sparkle = document.createElement('div');
+      sparkle.style.position = 'fixed';
+      sparkle.style.left = e.clientX + 'px';
+      sparkle.style.top = e.clientY + 'px';
+      sparkle.style.width = '8px';
+      sparkle.style.height = '8px';
+      sparkle.style.borderRadius = '50%';
+      sparkle.style.background = 'radial-gradient(circle,var(--accent-color) 60%, transparent 100%)';
+      sparkle.style.opacity = '0.8';
+      sparkle.style.pointerEvents = 'none';
+      sparkle.style.zIndex = 10000;
+      document.body.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 320);
+    });
+  </script>
+
+<script>
+window.addEventListener('DOMContentLoaded', function() {
+  var bgm = document.getElementById('backgroundMusic');
+  function tryPlay() {
+    if (bgm.paused) {
+      bgm.play().catch(() => {});
+    }
+    window.removeEventListener('click', tryPlay);
+    window.removeEventListener('touchstart', tryPlay);
+  }
+  bgm.play().catch(() => {
+    window.addEventListener('click', tryPlay, { once: true });
+    window.addEventListener('touchstart', tryPlay, { once: true });
+  });
+});
+</script>
+</body>
+</html>

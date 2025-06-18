@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A special birthday message and tribute for Cherono. Wishing you a happy birthday filled with love and light.">
+  <title>Happy Birthday Cherono 🎂</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-bg: #0d0d12;
+      --secondary-bg: #1a1a20;
+      --accent-color: #ff7baf;
+      --text-color: #e0e0e0;
+      --muted-text: #bcbcbc;
+      --card-bg: rgba(255, 255, 255, 0.10);
+      --card-border: rgba(255, 255, 255, 0.17);
+      --header-gradient-start: #fc466b;
+      --header-gradient-end: #3f5efb;
+      --button-color: #6c5ce7;
+      --button-hover: #4834d4;
+      --star-color: #ff9ff3;
+      --glow-color: #ff00ff;
+      --reveal-glow: #ff7baf;
+      --avatar-border: #fff6;
+      --balloon-red: #ff6f91;
+      --balloon-blue: #6ec6ff;
+      --balloon-yellow: #fff176;
+      --balloon-green: #78e08f;
+      --cursor: pointer;
+      --transition: 0.3s cubic-bezier(.4,2,.6,1);
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --primary-bg: #f8f8ff;
+        --secondary-bg: #fff;
+        --text-color: #232323;
+        --muted-text: #6c6c6c;
+        --card-bg: rgba(255,255,255,0.8);
+        --card-border: #e0e0e0;
+        --button-color: #a29bfe;
+        --button-hover: #6c5ce7;
+      }
+      body.light-mode {
+        background: var(--primary-bg);
+        color: var(--text-color);
+      }
+      body.light-mode header {
+        background: linear-gradient(to right, var(--header-gradient-end), var(--header-gradient-start));
+      }
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      transition: background 0.5s;
+    }
+
+    /* Background gradient */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 180vw;
+      height: 140vh;
+      background: radial-gradient(circle at center, rgba(63, 94, 251, 0.15) 0%, rgba(13, 13, 18, 0) 70%);
+      transform: translate(-50%, -50%);
+      z-index: -3;
+      pointer-events: none;
+    }
+
+    /* Balloons */
+    .balloon {
+      position: fixed;
+      z-index: 1;
+      width: 42px;
+      height: 60px;
+      border-radius: 50% 50% 50% 50% / 60% 60% 45% 45%;
+      opacity: 0.8;
+      animation: balloon-float 8s linear infinite;
+      pointer-events: none;
+    }
+    .balloon.red { background: var(--balloon-red); left: 15vw; animation-delay: 0s;}
+    .balloon.blue { background: var(--balloon-blue); left: 80vw; animation-delay: 1s;}
+    .balloon.yellow { background: var(--balloon-yellow); left: 50vw; animation-delay: 4s;}
+    .balloon.green { background: var(--balloon-green); left: 30vw; animation-delay: 2.5s;}
+
+    @keyframes balloon-float {
+      0% { bottom: -80px; transform: translateY(0) scale(1);}
+      50% { transform: translateY(-40px) scale(1.05);}
+      100% { bottom: 110vh; transform: translateY(-40px) scale(1);}
+    }
+
+    /* Header with avatar */
+    header {
+      padding: 4rem 1rem 2rem;
+      background: linear-gradient(to right, var(--header-gradient-start), var(--header-gradient-end));
+      font-family: 'Great Vibes', cursive;
+      color: #fff;
+      position: relative;
+      border-bottom-left-radius: 2rem;
+      border-bottom-right-radius: 2rem;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+      overflow: visible;
+    }
+    .avatar-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid var(--avatar-border);
+      box-shadow: 0 4px 32px rgba(0,0,0,0.25);
+      margin-bottom: 0.6rem;
+      background: #fff6;
+    }
+    .avatar-caption {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      letter-spacing: 1.5px;
+      color: var(--accent-color);
+      text-shadow: 0 1px 8px #0003;
+    }
+    header h1 {
+      font-size: clamp(2.8rem, 8vw, 4.8rem);
+      margin: 0;
+      text-shadow: 0 0 18px rgba(0,0,0,0.65);
+      letter-spacing: 2px;
+      animation: fadeInZoom 1.5s cubic-bezier(.4,2,.6,1);
+    }
+    @keyframes fadeInZoom {
+      0% { opacity: 0; transform: scale(0.82) translateY(-30px);}
+      100% { opacity: 1; transform: scale(1) translateY(0);}
+    }
+    header p {
+      font-size: clamp(1.1rem, 3vw, 1.5rem);
+      color: #ffeef7;
+      margin-top: 0.9rem;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+
+    /* Music control & theme toggle */
+    .top-controls {
+      position: absolute;
+      top: 1.1rem;
+      right: 1.2rem;
+      display: flex;
+      gap: 1rem;
+      z-index: 10;
+    }
+    .music-control, .theme-toggle, .share-btn {
+      background: rgba(0,0,0,0.5);
+      border: 2px solid var(--accent-color);
+      color: #fff;
+      border-radius: 50%;
+      cursor: var(--cursor);
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.23rem;
+      box-shadow: 0 0 10px rgba(255,123,175,0.2);
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      outline: none;
+    }
+    .music-control:hover, .theme-toggle:hover, .share-btn:hover {
+      background: rgba(0,0,0,0.8);
+      transform: scale(1.13);
+      box-shadow: 0 0 21px var(--glow-color);
+    }
+    .share-btn {
+      border-color: var(--button-color);
+      color: var(--button-color);
+      margin-left: 0.5rem;
+      font-size: 1.05rem;
+      width: 40px; height: 40px;
+    }
+
+    /* Slideshow */
+    .slideshow {
+      position: relative;
+      max-width: 650px;
+      height: 420px;
+      margin: 3rem auto;
+      border-radius: 1.5rem;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.8);
+      overflow: hidden;
+      background-color: var(--secondary-bg);
+    }
+    .slideshow img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0; left: 0;
+      opacity: 0;
+      transition: opacity 1s cubic-bezier(.4,2,.6,1);
+      border-radius: 1.5rem;
+      z-index: 1;
+    }
+    .slideshow img.active { opacity: 1; z-index: 2;}
+
+    .slideshow-controls {
+      position: absolute;
+      width: 100%;
+      bottom: 18px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      z-index: 10;
+    }
+    .slide-dot {
+      width: 13px; height: 13px;
+      border-radius: 50%;
+      background: var(--muted-text);
+      margin: 0 2px;
+      border: 2px solid var(--accent-color);
+      cursor: var(--cursor);
+      transition: background 0.3s, transform 0.2s;
+      opacity: 0.4;
+    }
+    .slide-dot.active {
+      background: var(--accent-color);
+      opacity: 1;
+      transform: scale(1.17);
+      box-shadow: 0 0 8px var(--accent-color);
+    }
+
+    /* Card Sections */
+    .message, .why-section, .hidden-message {
+      background-color: var(--card-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--card-border);
+      border-radius: 1.5rem;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+      padding: 2.5rem 2rem;
+      margin: 2.5rem auto;
+      max-width: 850px;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .message:hover, .why-section:hover, .hidden-message:hover {
+      transform: translateY(-7px) scale(1.01);
+      box-shadow: 0 14px 34px rgba(0,0,0,0.55);
+    }
+    .message {
+      font-size: clamp(1.08rem, 2.5vw, 1.22rem);
+      color: var(--text-color);
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.14);
+    }
+    .message p:not(:last-child) { margin-bottom: 1.25rem;}
+
+    .section-divider {
+      width: 70px; height: 3.5px;
+      background: linear-gradient(90deg, var(--accent-color), var(--button-color));
+      margin: 1.7rem auto 2.5rem auto;
+      border-radius: 6px;
+      opacity: 0.73;
+    }
+    .why-section h2 {
+      color: var(--accent-color);
+      margin-bottom: 1.5rem;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      text-shadow: 0 0 8px rgba(255,123,175,0.13);
+    }
+    .why-section ul {
+      list-style-type: none;
+      padding: 0;
+      font-size: clamp(1rem, 2.5vw, 1.1rem);
+      max-width: 650px;
+      margin: auto;
+      text-align: left;
+      color: var(--text-color);
+    }
+    .why-section li {
+      padding: 0.85rem 0 0.85rem 2.7rem;
+      position: relative;
+      border-bottom: 1px dashed rgba(255,255,255,0.07);
+    }
+    .why-section li:last-child { border-bottom: none;}
+    .why-section li::before {
+      content: '✨';
+      position: absolute; left: 0; top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.25em;
+      opacity: 0.85;
+    }
+
+    /* Reveal Section */
+    .reveal-section {
+      margin: 4rem auto;
+      max-width: 700px;
+      padding: 0 1.5rem;
+    }
+    .reveal-button {
+      padding: 1.2rem 2.5rem;
+      font-size: 1.25rem;
+      background-color: var(--button-color);
+      color: white;
+      border: none;
+      border-radius: 1rem;
+      cursor: var(--cursor);
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 10px var(--glow-color);
+      outline: none;
+      position: relative;
+      z-index: 3;
+    }
+    .reveal-button:hover {
+      background-color: var(--button-hover);
+      transform: translateY(-6px) scale(1.04);
+      box-shadow: 0 0 25px var(--reveal-glow), 0 10px 30px rgba(0,0,0,0.7);
+    }
+    .hidden-message {
+      display: none;
+      margin-top: 2rem;
+      font-size: clamp(1.05rem, 2.5vw, 1.23rem);
+      animation: reveal-msg 1.2s cubic-bezier(.4,2,.6,1);
+    }
+    @keyframes reveal-msg {
+      0% { opacity: 0; transform: translateY(25px) scale(0.97);}
+      100% { opacity: 1; transform: translateY(0) scale(1);}
+    }
+
+    /* Footer */
+    footer {
+      margin-top: auto;
+      padding: 2rem 1.5rem;
+      font-style: italic;
+      color: var(--muted-text);
+      font-size: 1.01rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      background-color: var(--secondary-bg);
+      box-shadow: 0 -5px 14px rgba(0,0,0,0.18);
+      text-align: center;
+      letter-spacing: 0.01em;
+      opacity: 0.91;
+    }
+    footer small {
+      display: block;
+      margin-top: 0.6rem;
+      font-size: 0.89rem;
+      color: var(--muted-text);
+    }
+
+    /* Stars */
+    .stars {
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+      top: 0; left: 0;
+      z-index: 0;
+      background: transparent;
+      pointer-events: none;
+    }
+    .star {
+      width: 4px; height: 4px;
+      background: var(--star-color);
+      border-radius: 50%;
+      position: absolute;
+      opacity: 0.6;
+      animation: twinkle 3s infinite ease-in-out;
+      box-shadow: 0 0 5px var(--star-color);
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.3; transform: scale(1);}
+      50% { opacity: 1; transform: scale(1.7);}
+    }
+
+    /* Confetti */
+    .confetti {
+      position: fixed;
+      left: 50%; top: 50%;
+      width: 100vw; height: 100vh;
+      pointer-events: none;
+      z-index: 999;
+      overflow: visible;
+      display: none;
+    }
+    .confetti-piece {
+      position: absolute;
+      width: 11px; height: 18px;
+      border-radius: 2px;
+      opacity: 0.8;
+      will-change: transform, opacity;
+      pointer-events: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header { padding: 2.3rem 0.2rem 1rem;}
+      .avatar { width: 80px; height: 80px;}
+      .slideshow { max-width: 97%; height: 220px;}
+      .message, .why-section, .hidden-message { padding: 1.2rem 0.6rem; margin: 1.3rem auto;}
+      .reveal-button { padding: 0.9rem 1.8rem; font-size: 1.1rem;}
+      .section-divider { width: 40px; margin: 1.2rem auto 1.8rem;}
+    }
+    @media (max-width: 480px) {
+      .avatar { width: 65px; height: 65px;}
+      header h1 { font-size: 1.6rem;}
+      .slideshow { height: 140px;}
+      .message, .why-section, .hidden-message { font-size: 0.97rem;}
+    }
+  </style>
+</head>
+<body>
+  <!-- Balloons -->
+  <div class="balloon red"></div>
+  <div class="balloon blue"></div>
+  <div class="balloon yellow"></div>
+  <div class="balloon green"></div>
+
+  <!-- Stars -->
+  <div class="stars" id="stars"></div>
+
+  <!-- Confetti -->
+  <div class="confetti" id="confetti"></div>
+
+  <header>
+    <div class="top-controls">
+      <button id="musicToggle" class="music-control" aria-label="Toggle music" title="Toggle music">
+        <span id="musicIcon">🎵</span>
+      </button>
+      <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme" title="Switch Light/Dark mode">🌙</button>
+      <button id="shareBtn" class="share-btn" aria-label="Share this page" title="Share this page">🔗</button>
+    </div>
+    <div class="avatar-wrap">
+      <img class="avatar" src="https://i.imgur.com/3ZQ3Z5L.png" alt="Cherono's Avatar" />
+      <div class="avatar-caption">Cherono</div>
+    </div>
+    <h1>Happy Birthday Cherono 🎂</h1>
+    <p>To someone who deserves the warmth of every sunset and the calm of every dawn.</p>
+  </header>
+
+  <main>
+    <section class="slideshow" aria-live="polite" aria-atomic="true">
+      <img class="slide active" src="https://via.placeholder.com/600x400/ff9ff3/000000?text=Golden+Moments" alt="Cherono smiling in a field of golden flowers during sunset" />
+      <img class="slide" src="https://via.placeholder.com/600x400/feca57/000000?text=Sunset+Glow" alt="Cherono's silhouette against a vibrant orange and pink sunset sky" />
+      <img class="slide" src="https://via.placeholder.com/600x400/48dbfb/000000?text=Silhouette+Magic" alt="Cherono enjoying a peaceful moment by the lake at dawn" />
+      <img class="slide" src="https://via.placeholder.com/600x400/1dd1a1/000000?text=Peaceful+Vibes" alt="Cherono looking serene, surrounded by lush greenery" />
+      <div class="slideshow-controls" id="slideshowControls"></div>
+    </section>
+
+    <section class="message" aria-labelledby="birthdayMessageHeading">
+      <h2 id="birthdayMessageHeading" class="sr-only">Birthday Message</h2>
+      <p>Hey Cherono,</p>
+      <p>You’re not just a year older today. You’re a year stronger, wiser, and more beautiful — inside and out.</p>
+      <p>I know the past year hasn’t been easy, but I’ve seen you glow through the pain. You didn’t just survive — you grew, and you kept shining. And that’s something powerful.</p>
+      <p>This little page is just a reminder that you’re deeply appreciated. Your kindness, your strength, your heart — it all matters. And I hope today fills your soul with love and light.</p>
+      <p>With love,<br>Kibet 🧡</p>
+    </section>
+    <div class="section-divider"></div>
+
+    <section class="why-section" aria-labelledby="whyYouAreAmazingHeading">
+      <h2 id="whyYouAreAmazingHeading">Why You're Amazing</h2>
+      <ul>
+        <li>You’re kind even when life wasn’t kind to you.</li>
+        <li>Your smile still lights up rooms.</li>
+        <li>You love deeply. You care hard.</li>
+        <li>You make others feel safe and seen.</li>
+        <li>You’ve grown through things that would’ve broken others.</li>
+        <li>You inspire without even realizing it.</li>
+      </ul>
+    </section>
+    <div class="section-divider"></div>
+
+    <section class="reveal-section">
+      <button id="revealButton" class="reveal-button" autocomplete="off">Click to Reveal 🎁</button>
+      <div id="hiddenMsg" class="hidden-message">
+        <p>I’ll always be here for you, no matter what. Watching you heal, grow, and keep your light alive has inspired me more than words can say. You’re not just amazing — you’re one of a kind, Cherono. 🧡</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Always cheering for you — Kibet 💖<br>
+    <small>This page was made with love using HTML, CSS & JS just for you ✨</small>
+  </footer>
+
+  <audio id="backgroundMusic" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/08/audio_228be088c6.mp3?filename=lovely-inspired-soft-piano-ambient-110472.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    // ----------- STAR BACKGROUND -----------
+    const starsContainer = document.getElementById("stars");
+    for (let i = 0; i < 100; i++) {
+      let star = document.createElement("div");
+      star.classList.add("star");
+      star.style.left = Math.random() * 100 + "%";
+      star.style.top = Math.random() * 100 + "%";
+      star.style.animationDelay = Math.random() * 7 + "s";
+      star.style.animationDuration = Math.random() * 5 + 3 + "s";
+      starsContainer.appendChild(star);
+    }
+
+    // ----------- SLIDESHOW + CONTROLS -----------
+    let slideIndex = 0;
+    const slides = document.querySelectorAll(".slide");
+    const slideshowControls = document.getElementById('slideshowControls');
+    let slideshowInterval;
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+        if (dots[i]) dots[i].classList.toggle('active', i === index);
+      });
+    }
+    function nextSlide() {
+      slideIndex = (slideIndex + 1) % slides.length;
+      showSlide(slideIndex);
+    }
+    function prevSlide() {
+      slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+      showSlide(slideIndex);
+    }
+    function startSlideshow() {
+      clearInterval(slideshowInterval);
+      slideshowInterval = setInterval(nextSlide, 3500);
+    }
+    // Dots
+    let dots = [];
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'slide-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+      dot.onclick = () => {
+        slideIndex = i;
+        showSlide(slideIndex);
+        startSlideshow();
+      };
+      slideshowControls.appendChild(dot);
+      dots.push(dot);
+    });
+    // Manual arrow keys
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight') { nextSlide(); startSlideshow(); }
+      if (e.key === 'ArrowLeft') { prevSlide(); startSlideshow(); }
+    });
+    showSlide(slideIndex);
+    startSlideshow();
+
+    // ----------- CONFETTI -----------
+    function createConfettiPiece() {
+      const colors = ['#ff7baf','#ff6f91','#6ec6ff','#fff176','#78e08f','#fc466b','#3f5efb','#6c5ce7'];
+      const el = document.createElement('div');
+      el.className = 'confetti-piece';
+      el.style.background = colors[Math.floor(Math.random() * colors.length)];
+      el.style.left = Math.random() * 98 + 'vw';
+      el.style.top = '-10vh';
+      el.style.transform = `rotate(${Math.random()*360}deg)`;
+      el.style.opacity = Math.random() * 0.7 + 0.3;
+      el.style.width = Math.random() > 0.5 ? '7px' : '11px';
+      el.style.height = Math.random() > 0.5 ? '14px' : '18px';
+      el.style.transition = 'none';
+      return el;
+    }
+    function fireConfetti() {
+      const count = 70;
+      const confetti = document.getElementById('confetti');
+      confetti.innerHTML = '';
+      confetti.style.display = 'block';
+      for (let i = 0; i < count; i++) {
+        const el = createConfettiPiece();
+        confetti.appendChild(el);
+        setTimeout(() => {
+          el.style.transition = 'all 2.3s cubic-bezier(.4,2,.6,1)';
+          el.style.top = 85 + 15 * Math.random() + 'vh';
+          el.style.left = (parseInt(el.style.left) + (Math.random() - 0.5) * 30) + 'vw';
+          el.style.opacity = 0;
+        }, 10);
+      }
+      setTimeout(() => confetti.style.display = 'none', 2400);
+    }
+
+    // ----------- REVEAL MESSAGE BUTTON -----------
+    document.getElementById('revealButton').addEventListener('click', function() {
+      const msg = document.getElementById('hiddenMsg');
+      if (msg.style.display === 'block') {
+        msg.style.display = 'none';
+        this.textContent = 'Click to Reveal 🎁';
+      } else {
+        msg.style.display = 'block';
+        this.textContent = 'Message Revealed! 🎉';
+        fireConfetti();
+      }
+    });
+
+    // ----------- MUSIC CONTROL -----------
+    const backgroundMusic = document.getElementById('backgroundMusic');
+    const musicToggleButton = document.getElementById('musicToggle');
+    const musicIcon = document.getElementById('musicIcon');
+    let isPlaying = false;
+    musicToggleButton.addEventListener('click', () => {
+      if (isPlaying) {
+        backgroundMusic.pause();
+        musicIcon.textContent = '🔇';
+        musicToggleButton.setAttribute('aria-label', 'Unmute music');
+      } else {
+        backgroundMusic.play().then(() => {
+          musicIcon.textContent = '🎵';
+          musicToggleButton.setAttribute('aria-label', 'Mute music');
+        }).catch(() => {
+          alert("Music autoplay is blocked by your browser. Please allow media playback for this site.");
+          musicIcon.textContent = '🚫';
+        });
+      }
+      isPlaying = !isPlaying;
+    });
+
+    // ----------- THEME TOGGLE -----------
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('light-mode');
+      themeToggle.textContent = document.body.classList.contains('light-mode') ? '🌞' : '🌙';
+    });
+
+    // ----------- SHARE BUTTON -----------
+    document.getElementById('shareBtn').addEventListener('click', async () => {
+      const shareData = {
+        title: 'Happy Birthday Cherono!',
+        text: 'Check out this special birthday page for Cherono! 🎂✨',
+        url: window.location.href
+      };
+      if (navigator.share) {
+        try { await navigator.share(shareData); }
+        catch (e) {}
+      } else {
+        navigator.clipboard.writeText(window.location.href);
+        alert('Link copied! Share it with Cherono 🎉');
+      }
+    });
+
+    // ----------- ACCESSIBILITY: Focus outline for buttons -----------
+    document.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('keydown', e => {
+        if (e.key === 'Tab') btn.style.outline = '2px solid #ff7baf';
+      });
+      btn.addEventListener('blur', e => btn.style.outline = '');
+    });
+
+    // ----------- FUN: Cursor sparkle effect -----------
+    document.body.addEventListener('pointermove', function(e) {
+      const sparkle = document.createElement('div');
+      sparkle.style.position = 'fixed';
+      sparkle.style.left = e.clientX + 'px';
+      sparkle.style.top = e.clientY + 'px';
+      sparkle.style.width = '8px';
+      sparkle.style.height = '8px';
+      sparkle.style.borderRadius = '50%';
+      sparkle.style.background = 'radial-gradient(circle,var(--accent-color) 60%, transparent 100%)';
+      sparkle.style.opacity = '0.8';
+      sparkle.style.pointerEvents = 'none';
+      sparkle.style.zIndex = 10000;
+      document.body.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 320);
+    });
+
+    // ----------- OPTIONAL: Music auto prompt on first interaction -----------
+    window.addEventListener('click', function autoMusicPrompt() {
+      if (!isPlaying) {
+        backgroundMusic.play().then(() => {
+          musicIcon.textContent = '🎵';
+          isPlaying = true;
+        }).catch(() => {});
+      }
+      window.removeEventListener('click', autoMusicPrompt);
+    }, {once:true});
+  </script>
+</body>
+</html>
